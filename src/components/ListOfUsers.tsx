@@ -21,7 +21,7 @@ export const ListOfUsers = ({ users }: Props): JSX.Element => {
       </thead>
       <tbody>
         {users.map((user) => (
-          <tr>
+          <tr key={user.login.uuid}>
             <td>
               <img src={user.picture.thumbnail} alt="a profile image" />
             </td>
