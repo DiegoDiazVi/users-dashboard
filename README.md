@@ -4,8 +4,8 @@ El objetivo de esta prueba técnica es crear una aplicación similar a la que se
 
 Los pasos a seguir:
 
-- [] Obtener 100 filas de datos utilizando la API.
-- [] Mostrar los datos en un formato de tabla, similar al ejemplo.
+- [x] Obtener 100 filas de datos utilizando la API.
+- [x] Mostrar los datos en un formato de tabla, similar al ejemplo.
 - [] Proporcionar la opción de colorear filas como se muestra en el ejemplo.
 - [] Permitir que los datos se ordenen por país como se demuestra en el ejemplo.
 - [] Habilitar la opción de eliminar una fila como en el ejemplo.
