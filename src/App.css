@@ -9,3 +9,11 @@
 .table-header {
   font-weight: bold;
 }
+
+.table-row-color tr:nth-child(2n) {
+  background-color: #555;
+}
+
+.table-row-color tr:nth-child(2n + 1) {
+  background-color: #333;
+}
