@@ -48,7 +48,7 @@ function App(): JSX.Element {
   return (
     <>
       <h1>Prueba Tecnica</h1>
-      <header>
+      <header className="header">
         <button onClick={toggleRows}> Colorear filas </button>
         <button onClick={handleSortByCountry}> Ordenar por pais </button>
         <button onClick={handleRestoreUsers}> Restaurar los usuarios</button>
