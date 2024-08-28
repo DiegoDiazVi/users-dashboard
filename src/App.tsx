@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import './App.css';
 import { ListOfUsers } from './components/ListOfUsers';
 import type { User, UserList } from './types';
@@ -8,10 +8,15 @@ function App(): JSX.Element {
   const [changeColor, setChangeColor] = useState(false);
   const [sortByCountry, setSortByCountry] = useState(false);
 
+  const originalUsers = useRef<User[]>([]);
+
   useEffect(() => {
     fetch('https://randomuser.me/api/?results=100')
       .then((result) => result.json())
-      .then((data: UserList) => setUsersList(data.results));
+      .then((data: UserList) => {
+        setUsersList(data.results);
+        originalUsers.current = data.results;
+      });
   }, []);
 
   const toggleRows = (): void => {
@@ -25,6 +30,10 @@ function App(): JSX.Element {
   const handleDeleteUser = (uuid: string): void => {
     const users = usersList.filter((user) => user.login.uuid !== uuid);
     setUsersList(users);
+  };
+
+  const handleRestoreUsers = () => {
+    setUsersList(originalUsers.current);
   };
 
   const sortCountrys = useMemo(() => {
@@ -42,6 +51,7 @@ function App(): JSX.Element {
       <header>
         <button onClick={toggleRows}> Colorear filas </button>
         <button onClick={handleSortByCountry}> Ordenar por pais </button>
+        <button onClick={handleRestoreUsers}> Restaurar los usuarios</button>
       </header>
       <main>
         <ListOfUsers
