@@ -1,5 +1,5 @@
 import '../App.css';
-import { User, UserFilter } from '../types';
+import { type User, UserFilter } from '../types.d';
 
 interface Props {
   users: User[];
