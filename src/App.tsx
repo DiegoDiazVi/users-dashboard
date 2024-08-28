@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import './App.css';
 import { ListOfUsers } from './components/ListOfUsers';
-import { User, UserFilter, UserList } from './types';
+import { type User, UserFilter, type UserList } from './types.d';
 
 function App(): JSX.Element {
   const [usersList, setUsersList] = useState<User[]>([]);
@@ -46,16 +46,26 @@ function App(): JSX.Element {
     return usersList;
   }, [filter, usersList]);
 
-  const sortCountrys = useMemo(() => {
+  const sortUsers = useMemo(() => {
     if (filter.trim().length > 0) {
       return filterUsers;
     }
-    if (sort) {
-      return [...usersList].sort((a, b) =>
-        a.location.country.localeCompare(b.location.country)
-      );
+    switch (sort) {
+      case UserFilter.NAME:
+        return [...usersList].sort((a, b) =>
+          a.name.first.localeCompare(b.name.first)
+        );
+      case UserFilter.LAST:
+        return [...usersList].sort((a, b) =>
+          a.name.last.localeCompare(b.name.last)
+        );
+      case UserFilter.COUNTRY:
+        return [...usersList].sort((a, b) =>
+          a.location.country.localeCompare(b.location.country)
+        );
+      default:
+        return usersList;
     }
-    return usersList;
   }, [sort, filterUsers]);
 
   return (
@@ -77,7 +87,7 @@ function App(): JSX.Element {
       <main>
         <ListOfUsers
           changeColor={changeColor}
-          users={sortCountrys}
+          users={sortUsers}
           handleDeleteUser={handleDeleteUser}
           handleSort={handleSort}
         />
