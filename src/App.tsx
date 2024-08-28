@@ -7,6 +7,7 @@ function App(): JSX.Element {
   const [usersList, setUsersList] = useState<User[]>([]);
   const [changeColor, setChangeColor] = useState(false);
   const [sortByCountry, setSortByCountry] = useState(false);
+  const [filter, setFilter] = useState('');
 
   const originalUsers = useRef<User[]>([]);
 
@@ -36,14 +37,26 @@ function App(): JSX.Element {
     setUsersList(originalUsers.current);
   };
 
+  const filterUsers = useMemo(() => {
+    if (filter.trim().length > 0) {
+      return usersList.filter((user) =>
+        user.location.country.toLowerCase().includes(filter.toLowerCase())
+      );
+    }
+    return usersList;
+  }, [filter, usersList]);
+
   const sortCountrys = useMemo(() => {
+    if (filter.trim().length > 0) {
+      return filterUsers;
+    }
     if (sortByCountry) {
       return [...usersList].sort((a, b) =>
         a.location.country.localeCompare(b.location.country)
       );
     }
     return usersList;
-  }, [sortByCountry, usersList]);
+  }, [sortByCountry, filterUsers]);
 
   return (
     <>
@@ -52,6 +65,11 @@ function App(): JSX.Element {
         <button onClick={toggleRows}> Colorear filas </button>
         <button onClick={handleSortByCountry}> Ordenar por pais </button>
         <button onClick={handleRestoreUsers}> Restaurar los usuarios</button>
+        <input
+          type="text"
+          placeholder="Ingresa un pais"
+          onChange={(e) => setFilter(e.target.value)}
+        />
       </header>
       <main>
         <ListOfUsers

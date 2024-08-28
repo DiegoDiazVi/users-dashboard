@@ -11,6 +11,6 @@ Los pasos a seguir:
 - [x] Habilitar la opción de eliminar una fila como en el ejemplo.
 - [x] Implementar una función que permita al usuario restaurar el estado inicial, recuperando todas las filas eliminadas.
 - [x] Manejar cualquier posible error que pueda ocurrir.
-- [] Implementar una función que permita al usuario filtrar los datos por país.
+- [x] Implementar una función que permita al usuario filtrar los datos por país.
 - [] Evitar reordenar los usuarios cuando se cambia el filtro por país.
 - [] Ordenar al hacer clic en el encabezado de la columna.
