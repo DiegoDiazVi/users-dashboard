@@ -7,7 +7,7 @@ Los pasos a seguir:
 - [x] Obtener 100 filas de datos utilizando la API.
 - [x] Mostrar los datos en un formato de tabla, similar al ejemplo.
 - [x] Proporcionar la opción de colorear filas como se muestra en el ejemplo.
-- [] Permitir que los datos se ordenen por país como se demuestra en el ejemplo.
+- [x] Permitir que los datos se ordenen por país como se demuestra en el ejemplo.
 - [] Habilitar la opción de eliminar una fila como en el ejemplo.
 - [] Implementar una función que permita al usuario restaurar el estado inicial, recuperando todas las filas eliminadas.
 - [] Manejar cualquier posible error que pueda ocurrir.
