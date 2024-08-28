@@ -1,13 +1,18 @@
+import '../App.css';
 import type { User } from '../types';
 
 interface Props {
   users: User[];
+  changeColor: boolean;
 }
-export const ListOfUsers = ({ users }: Props): JSX.Element => {
+export const ListOfUsers = ({ users, changeColor }: Props): JSX.Element => {
   const boldTitle: React.CSSProperties = {
     fontWeight: 'bold',
     fontSize: '16px',
   };
+
+  const rowColor = changeColor ? 'table-row-color' : '';
+
   return (
     <table width={'100%'}>
       <thead>
@@ -19,7 +24,7 @@ export const ListOfUsers = ({ users }: Props): JSX.Element => {
           <td>Accion</td>
         </tr>
       </thead>
-      <tbody>
+      <tbody className={rowColor}>
         {users.map((user) => (
           <tr key={user.login.uuid}>
             <td>
