@@ -24,7 +24,7 @@ function App(): JSX.Element {
         <button onClick={toggleRows}> Colorear filas </button>
       </header>
       <main>
-        <ListOfUsers users={usersList} />
+        <ListOfUsers changeColor={changeColor} users={usersList} />
       </main>
     </>
   );
