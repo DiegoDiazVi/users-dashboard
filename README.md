@@ -4,13 +4,13 @@ El objetivo de esta prueba técnica es crear una aplicación similar a la que se
 
 Los pasos a seguir:
 
-- [] Fetch 100 rows of data using the API.
-- [] Display the data in a table format, similar to the example.
-- [] Provide the option to color rows as shown in the example.
-- [] Allow the data to be sorted by country as demonstrated in the example.
-- [] Enable the ability to delete a row as shown in the example.
-- [] Implement a feature that allows the user to restore the initial state, meaning that all deleted rows will be recovered.
-- [] Handle any potential errors that may occur.
-- [] Implement a feature that allows the user to filter the data by country.
-- [] Avoid sorting users again the data when the user is changing filter by country.
-- [] Sort by clicking on the column header.
+- [] Obtener 100 filas de datos utilizando la API.
+- [] Mostrar los datos en un formato de tabla, similar al ejemplo.
+- [] Proporcionar la opción de colorear filas como se muestra en el ejemplo.
+- [] Permitir que los datos se ordenen por país como se demuestra en el ejemplo.
+- [] Habilitar la opción de eliminar una fila como en el ejemplo.
+- [] Implementar una función que permita al usuario restaurar el estado inicial, recuperando todas las filas eliminadas.
+- [] Manejar cualquier posible error que pueda ocurrir.
+- [] Implementar una función que permita al usuario filtrar los datos por país.
+- [] Evitar reordenar los usuarios cuando se cambia el filtro por país.
+- [] Ordenar al hacer clic en el encabezado de la columna.
