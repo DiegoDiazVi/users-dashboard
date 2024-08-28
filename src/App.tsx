@@ -5,6 +5,7 @@ import type { User, UserList } from './types';
 
 function App(): JSX.Element {
   const [usersList, setUsersList] = useState<User[]>([]);
+  const [changeColor, setChangeColor] = useState(false);
 
   useEffect(() => {
     fetch('https://randomuser.me/api/?results=100')
@@ -12,10 +13,19 @@ function App(): JSX.Element {
       .then((data: UserList) => setUsersList(data.results));
   }, []);
 
+  const toggleRows = () => {
+    setChangeColor(!changeColor);
+  };
+
   return (
     <>
       <h1>Prueba Tecnica</h1>
-      <ListOfUsers users={usersList} />
+      <header>
+        <button onClick={toggleRows}> Colorear filas </button>
+      </header>
+      <main>
+        <ListOfUsers users={usersList} />
+      </main>
     </>
   );
 }
