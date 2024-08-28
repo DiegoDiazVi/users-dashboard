@@ -1,15 +1,17 @@
 import '../App.css';
-import type { User } from '../types';
+import { User, UserFilter } from '../types';
 
 interface Props {
   users: User[];
   changeColor: boolean;
   handleDeleteUser: (uuid: string) => void;
+  handleSort: (sort: UserFilter) => void;
 }
 export const ListOfUsers = ({
   users,
   changeColor,
   handleDeleteUser,
+  handleSort,
 }: Props): JSX.Element => {
   const boldTitle: React.CSSProperties = {
     fontWeight: 'bold',
@@ -23,9 +25,9 @@ export const ListOfUsers = ({
       <thead>
         <tr style={boldTitle}>
           <td>Foto</td>
-          <td>Nombre</td>
-          <td>Apellido</td>
-          <td>Pais</td>
+          <td onClick={() => handleSort(UserFilter.NAME)}>Nombre</td>
+          <td onClick={() => handleSort(UserFilter.LAST)}>Apellido</td>
+          <td onClick={() => handleSort(UserFilter.COUNTRY)}>Pais</td>
           <td>Accion</td>
         </tr>
       </thead>
