@@ -1,12 +1,12 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import './App.css';
 import { ListOfUsers } from './components/ListOfUsers';
-import type { User, UserList } from './types';
+import { User, UserFilter, UserList } from './types';
 
 function App(): JSX.Element {
   const [usersList, setUsersList] = useState<User[]>([]);
   const [changeColor, setChangeColor] = useState(false);
-  const [sortByCountry, setSortByCountry] = useState(false);
+  const [sort, setSort] = useState(UserFilter.NONE);
   const [filter, setFilter] = useState('');
 
   const originalUsers = useRef<User[]>([]);
@@ -24,8 +24,8 @@ function App(): JSX.Element {
     setChangeColor(!changeColor);
   };
 
-  const handleSortByCountry = () => {
-    setSortByCountry(!sortByCountry);
+  const handleSort = (sortType: UserFilter) => {
+    setSort(sortType);
   };
 
   const handleDeleteUser = (uuid: string): void => {
@@ -50,20 +50,23 @@ function App(): JSX.Element {
     if (filter.trim().length > 0) {
       return filterUsers;
     }
-    if (sortByCountry) {
+    if (sort) {
       return [...usersList].sort((a, b) =>
         a.location.country.localeCompare(b.location.country)
       );
     }
     return usersList;
-  }, [sortByCountry, filterUsers]);
+  }, [sort, filterUsers]);
 
   return (
     <>
       <h1>Prueba Tecnica</h1>
       <header className="header">
         <button onClick={toggleRows}> Colorear filas </button>
-        <button onClick={handleSortByCountry}> Ordenar por pais </button>
+        <button onClick={() => handleSort(UserFilter.COUNTRY)}>
+          {' '}
+          Ordenar por pais{' '}
+        </button>
         <button onClick={handleRestoreUsers}> Restaurar los usuarios</button>
         <input
           type="text"
@@ -76,6 +79,7 @@ function App(): JSX.Element {
           changeColor={changeColor}
           users={sortCountrys}
           handleDeleteUser={handleDeleteUser}
+          handleSort={handleSort}
         />
       </main>
     </>
