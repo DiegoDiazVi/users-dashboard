@@ -81,3 +81,10 @@ export interface Picture {
   medium: string;
   thumbnail: string;
 }
+
+export enum UserFilter {
+  NONE = 'none',
+  COUNTRY = 'country',
+  NAME = 'name',
+  LAST = 'last',
+}
