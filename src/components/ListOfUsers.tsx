@@ -4,10 +4,14 @@ interface Props {
   users: User[];
 }
 export const ListOfUsers = ({ users }: Props): JSX.Element => {
+  const boldTitle: React.CSSProperties = {
+    fontWeight: 'bold',
+    fontSize: '16px',
+  };
   return (
-    <table>
+    <table width={'100%'}>
       <thead>
-        <tr>
+        <tr style={boldTitle}>
           <td>Foto</td>
           <td>Nombre</td>
           <td>Apellido</td>
