@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import './App.css';
+import { ListOfUsers } from './components/ListOfUsers';
 import type { User, UserList } from './types';
 
 function App(): JSX.Element {
@@ -14,7 +15,7 @@ function App(): JSX.Element {
   return (
     <>
       <h1>Prueba Tecnica</h1>
-      <pre>{JSON.stringify(usersList, null, 2)}</pre>
+      <ListOfUsers users={usersList} />
     </>
   );
 }
