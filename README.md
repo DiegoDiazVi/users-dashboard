@@ -8,7 +8,7 @@ Los pasos a seguir:
 - [x] Mostrar los datos en un formato de tabla, similar al ejemplo.
 - [x] Proporcionar la opción de colorear filas como se muestra en el ejemplo.
 - [x] Permitir que los datos se ordenen por país como se demuestra en el ejemplo.
-- [] Habilitar la opción de eliminar una fila como en el ejemplo.
+- [x] Habilitar la opción de eliminar una fila como en el ejemplo.
 - [] Implementar una función que permita al usuario restaurar el estado inicial, recuperando todas las filas eliminadas.
 - [] Manejar cualquier posible error que pueda ocurrir.
 - [] Implementar una función que permita al usuario filtrar los datos por país.

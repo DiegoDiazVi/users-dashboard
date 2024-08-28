@@ -22,6 +22,11 @@ function App(): JSX.Element {
     setSortByCountry(!sortByCountry);
   };
 
+  const handleDeleteUser = (uuid: string): void => {
+    const users = usersList.filter((user) => user.login.uuid !== uuid);
+    setUsersList(users);
+  };
+
   const sortCountrys = useMemo(() => {
     if (sortByCountry) {
       return [...usersList].sort((a, b) =>
@@ -39,7 +44,11 @@ function App(): JSX.Element {
         <button onClick={handleSortByCountry}> Ordenar por pais </button>
       </header>
       <main>
-        <ListOfUsers changeColor={changeColor} users={sortCountrys} />
+        <ListOfUsers
+          changeColor={changeColor}
+          users={sortCountrys}
+          handleDeleteUser={handleDeleteUser}
+        />
       </main>
     </>
   );

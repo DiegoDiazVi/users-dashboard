@@ -4,8 +4,13 @@ import type { User } from '../types';
 interface Props {
   users: User[];
   changeColor: boolean;
+  handleDeleteUser: (uuid: string) => void;
 }
-export const ListOfUsers = ({ users, changeColor }: Props): JSX.Element => {
+export const ListOfUsers = ({
+  users,
+  changeColor,
+  handleDeleteUser,
+}: Props): JSX.Element => {
   const boldTitle: React.CSSProperties = {
     fontWeight: 'bold',
     fontSize: '16px',
@@ -34,7 +39,9 @@ export const ListOfUsers = ({ users, changeColor }: Props): JSX.Element => {
             <td>{user.name.last}</td>
             <td>{user.location.country}</td>
             <td>
-              <button>Borrar</button>
+              <button onClick={() => handleDeleteUser(user.login.uuid)}>
+                Borrar
+              </button>
             </td>
           </tr>
         ))}
