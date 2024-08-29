@@ -29,7 +29,7 @@ function App(): JSX.Element {
     setChangeColor(!changeColor);
   };
 
-  const handleSort = (sortType: UserFilter) => {
+  const handleSort = (sortType: UserFilter): void => {
     setSort(sortType);
   };
 
@@ -38,7 +38,7 @@ function App(): JSX.Element {
     setUsersList(users);
   };
 
-  const handleRestoreUsers = () => {
+  const handleRestoreUsers = (): void => {
     setUsersList(originalUsers.current);
   };
 
