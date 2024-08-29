@@ -88,3 +88,7 @@ export enum UserFilter {
   NAME = 'name',
   LAST = 'last',
 }
+
+type sortFunctions = {
+  [key in UserFilter]: ((a: User, b: User) => number) | null;
+};
