@@ -1,7 +1,12 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import './App.css';
 import { ListOfUsers } from './components/ListOfUsers';
-import { type User, UserFilter, type UserList } from './types.d';
+import {
+  type sortFunctions,
+  type User,
+  UserFilter,
+  type UserList,
+} from './types.d';
 
 function App(): JSX.Element {
   const [usersList, setUsersList] = useState<User[]>([]);
@@ -46,26 +51,22 @@ function App(): JSX.Element {
     return usersList;
   }, [filter, usersList]);
 
+  const sortFunction: sortFunctions = {
+    [UserFilter.NONE]: null,
+    [UserFilter.NAME]: (a, b) => a.name.first.localeCompare(b.name.first),
+    [UserFilter.LAST]: (a, b) => a.name.last.localeCompare(b.name.last),
+    [UserFilter.COUNTRY]: (a, b) =>
+      a.location.country.localeCompare(b.location.country),
+  };
+
   const sortUsers = useMemo(() => {
     if (filter.trim().length > 0) {
       return filterUsers;
     }
-    switch (sort) {
-      case UserFilter.NAME:
-        return [...usersList].sort((a, b) =>
-          a.name.first.localeCompare(b.name.first)
-        );
-      case UserFilter.LAST:
-        return [...usersList].sort((a, b) =>
-          a.name.last.localeCompare(b.name.last)
-        );
-      case UserFilter.COUNTRY:
-        return [...usersList].sort((a, b) =>
-          a.location.country.localeCompare(b.location.country)
-        );
-      default:
-        return usersList;
-    }
+
+    return sortFunction[sort]
+      ? [...usersList].sort(sortFunction[sort])
+      : usersList;
   }, [sort, filterUsers]);
 
   return (
