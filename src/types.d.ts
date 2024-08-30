@@ -92,3 +92,13 @@ export enum UserFilter {
 type sortFunctions = {
   [key in UserFilter]: ((a: User, b: User) => number) | null;
 };
+
+export interface UserListHook {
+  sortUsers: User[];
+  changeColor: boolean;
+  toggleRows: () => void;
+  handleSort: (sortType: UserFilter) => void;
+  handleDeleteUser: (uuid: string) => void;
+  handleRestoreUsers: () => void;
+  setFilter: (value: string) => void;
+}
