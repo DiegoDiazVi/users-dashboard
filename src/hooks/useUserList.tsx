@@ -72,7 +72,7 @@ export const useUserList = (url: string): UserListHook => {
     return sortFunction[sort]
       ? [...filterUsers].sort(sortFunction[sort])
       : usersList;
-  }, [sort, filterUsers]);
+  }, [sort, filterUsers, filter]);
 
   return {
     sortUsers,
