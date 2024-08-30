@@ -25,9 +25,18 @@ export const ListOfUsers = ({
       <thead>
         <tr style={boldTitle}>
           <td>Foto</td>
-          <td onClick={() => handleSort(UserFilter.NAME)}>Nombre</td>
-          <td onClick={() => handleSort(UserFilter.LAST)}>Apellido</td>
-          <td onClick={() => handleSort(UserFilter.COUNTRY)}>Pais</td>
+          <td className="pointer" onClick={() => handleSort(UserFilter.NAME)}>
+            Nombre
+          </td>
+          <td className="pointer" onClick={() => handleSort(UserFilter.LAST)}>
+            Apellido
+          </td>
+          <td
+            className="pointer"
+            onClick={() => handleSort(UserFilter.COUNTRY)}
+          >
+            Pais
+          </td>
           <td>Accion</td>
         </tr>
       </thead>
