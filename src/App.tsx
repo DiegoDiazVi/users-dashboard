@@ -12,7 +12,7 @@ function App(): JSX.Element {
     handleDeleteUser,
     handleRestoreUsers,
     setFilter,
-  } = useUserList();
+  } = useUserList('https://randomuser.me/api/?results=100');
   return (
     <>
       <h1>Prueba Tecnica</h1>

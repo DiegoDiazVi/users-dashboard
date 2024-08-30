@@ -7,7 +7,7 @@ import {
   type UserListHook,
 } from '../types.d';
 
-export const useUserList = (): UserListHook => {
+export const useUserList = (url: string): UserListHook => {
   const [usersList, setUsersList] = useState<User[]>([]);
   const [changeColor, setChangeColor] = useState(false);
   const [sort, setSort] = useState(UserFilter.NONE);
@@ -16,13 +16,13 @@ export const useUserList = (): UserListHook => {
   const originalUsers = useRef<User[]>([]);
 
   useEffect(() => {
-    fetch('https://randomuser.me/api/?results=100')
+    fetch(url)
       .then((result) => result.json())
       .then((data: UserList) => {
         setUsersList(data.results);
         originalUsers.current = data.results;
       });
-  }, []);
+  }, [url]);
 
   const toggleRows = (): void => {
     setChangeColor(!changeColor);
