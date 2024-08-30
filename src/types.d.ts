@@ -90,7 +90,7 @@ export enum UserFilter {
 }
 
 type sortFunctions = {
-  [key in UserFilter]: ((a: User, b: User) => number) | null;
+  [key in UserFilter]: (a: User, b: User) => number;
 };
 
 export interface UserListHook {

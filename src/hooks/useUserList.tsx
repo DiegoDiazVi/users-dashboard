@@ -16,12 +16,18 @@ export const useUserList = (url: string): UserListHook => {
   const originalUsers = useRef<User[]>([]);
 
   useEffect(() => {
-    fetch(url)
-      .then((result) => result.json())
-      .then((data: UserList) => {
+    const fetchData = async () => {
+      try {
+        const result = await fetch(url);
+        const data: UserList = await result.json();
         setUsersList(data.results);
         originalUsers.current = data.results;
-      });
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
   }, [url]);
 
   const toggleRows = (): void => {
@@ -51,7 +57,7 @@ export const useUserList = (url: string): UserListHook => {
   }, [filter, usersList]);
 
   const sortFunction: sortFunctions = {
-    [UserFilter.NONE]: null,
+    [UserFilter.NONE]: () => 0,
     [UserFilter.NAME]: (a, b) => a.name.first.localeCompare(b.name.first),
     [UserFilter.LAST]: (a, b) => a.name.last.localeCompare(b.name.last),
     [UserFilter.COUNTRY]: (a, b) =>
